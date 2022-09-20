@@ -56,7 +56,11 @@ export default new Vuex.Store({
       return state.enfermeiros.length;
     },
     socorristasPorTurno(state) {
-      return state.socorristas.filter((s) => s.turno === "manhã");
+      //closure - retorno de uma função para receber o parametro
+      return (turno) =>
+        !turno
+          ? state.socorristas
+          : state.socorristas.filter((s) => s.turno === turno);
     },
   },
 });

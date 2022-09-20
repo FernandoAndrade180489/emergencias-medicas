@@ -1,5 +1,13 @@
 <template>
   <div>
+    <div v-if="tipo == 'socorristas'">
+      <select class="form-control form-control-sm" v-model="turno">
+        <option value="">Todos</option>
+        <option value="manhã">Manhã</option>
+        <option value="tarde">Tarde</option>
+        <option value="noite">Noite</option>
+      </select>
+    </div>
     <item v-for="(item, indice) in itens" :key="indice" :dados="item" />
   </div>
 </template>
@@ -13,6 +21,9 @@ export default {
   components: {
     Item,
   },
+  data: () => ({
+    turno: "",
+  }),
   props: {
     tipo: String,
   },
@@ -39,7 +50,7 @@ export default {
         case "enfermeiros":
           return this.enfermeiros;
         case "socorristas":
-          return this.$store.getters.socorristasPorTurno;
+          return this.$store.getters.socorristasPorTurno(this.turno);
         case "medicos":
           return this.medicos;
         case "carros":
