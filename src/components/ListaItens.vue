@@ -1,21 +1,50 @@
 <template>
-    <div>
-        Lista Itens {{ tipo }}
-        <br>
-        <item />
-    </div>
+  <div>
+    Lista Itens {{ tipo }}
+    <br />
+    {{ itens }}
+    <item />
+  </div>
 </template>
 
 <script>
-import Item from '@/components/Item.vue'
+import Item from "@/components/Item.vue";
+import { mapState } from "vuex";
 
 export default {
-    name: 'ListaItens',
-    components: { 
-        Item
+  name: "ListaItens",
+  components: {
+    Item,
+  },
+  props: {
+    tipo: String,
+  },
+  computed: {
+    // enfermeiros() {
+    //   return this.$store.state.enfermeiros;
+    // },
+    // medicos() {
+    //   return this.$store.state.medicos;
+    // },
+    // socorristas() {
+    //   return this.$store.state.socorristas;
+    // },
+    ...mapState({
+      enfermeiros: (state) => state.enfermeiros,
+      socorristas: (state) => state.socorristas,
+      medicos: (state) => state.medicos,
+    }),
+    itens() {
+      switch (this.tipo) {
+        case "enfermeiros":
+          return this.enfermeiros;
+        case "socorristas":
+          return this.socorristas;
+        case "medicos":
+          return this.medicos;
+      }
+      return [];
     },
-    props: {
-        tipo: String
-    }
-}
+  },
+};
 </script>
