@@ -9,6 +9,9 @@
       </select>
     </div>
     <item v-for="(item, indice) in itens" :key="indice" :dados="item" />
+    <div v-if="tipo == 'socorristas'">
+      Total: {{ $store.getters.totalSocorristasPorTurno(turno) }}
+    </div>
   </div>
 </template>
 
