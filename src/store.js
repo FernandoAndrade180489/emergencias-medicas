@@ -55,5 +55,8 @@ export default new Vuex.Store({
     totalEnfermeiros(state) {
       return state.enfermeiros.length;
     },
+    socorristasPorTurno(state) {
+      return state.socorristas.filter((s) => s.turno === "manhã");
+    },
   },
 });

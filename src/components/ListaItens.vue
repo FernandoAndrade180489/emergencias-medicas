@@ -28,7 +28,7 @@ export default {
     // },
     ...mapState({
       enfermeiros: (state) => state.enfermeiros,
-      socorristas: (state) => state.socorristas,
+      // socorristas: (state) => state.socorristas,
       medicos: (state) => state.medicos,
       carros: (state) => state.equipamentos.carros,
       telefones: (state) => state.equipamentos.telefones,
@@ -39,7 +39,7 @@ export default {
         case "enfermeiros":
           return this.enfermeiros;
         case "socorristas":
-          return this.socorristas;
+          return this.$store.getters.socorristasPorTurno;
         case "medicos":
           return this.medicos;
         case "carros":
