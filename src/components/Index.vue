@@ -1,14 +1,14 @@
 <template>
   <div>
-    
     <nav class="navbar navbar-light bg-light">
       <div class="container-fluid">
-        <a class="navbar-brand" href="#">Emergencias Médicas</a>
+        <a class="navbar-brand" href="#"
+          >{{ $store.state.titulo }} {{ tituloCustomizado }}</a
+        >
       </div>
     </nav>
 
     <div class="container">
-
       <div class="row mt-5">
         <div class="col-6 p">
           <profissionais />
@@ -35,21 +35,26 @@
 </template>
 
 <script>
-import ConfiguracaoEquipe from './ConfiguracaoEquipe.vue'
-import Equipamentos from './Equipamentos.vue'
-import Equipes from './Equipes.vue'
-import Profissionais from './Profissionais.vue'
+import ConfiguracaoEquipe from "./ConfiguracaoEquipe.vue";
+import Equipamentos from "./Equipamentos.vue";
+import Equipes from "./Equipes.vue";
+import Profissionais from "./Profissionais.vue";
 
 export default {
-  components: { 
+  components: {
     ConfiguracaoEquipe,
     Equipamentos,
     Equipes,
-    Profissionais
+    Profissionais,
   },
-  name: 'Index',
+  name: "Index",
   props: {
-    msg: String
-  }
-}
+    msg: String,
+  },
+  computed: {
+    tituloCustomizado() {
+      return `.: ${this.$store.state.titulo}`;
+    },
+  },
+};
 </script>
