@@ -16,6 +16,7 @@ export default new Vuex.Store({
       { id: 2, nome: "Maria", escala: "12x36" },
       { id: 3, nome: "Ana", escala: "24x48" },
       { id: 4, nome: "José", escala: "24x48" },
+      { id: 5, nome: "Felipe", escala: "12x36" },
     ],
     socorristas: [
       { id: 1, nome: "Marcos", turno: "manhã" },
@@ -48,6 +49,11 @@ export default new Vuex.Store({
         { id: 3, kit: "K0003" },
         { id: 4, kit: "K0004" },
       ],
+    },
+  },
+  getters: {
+    totalEnfermeiros(state) {
+      return state.enfermeiros.length;
     },
   },
 });
