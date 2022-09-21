@@ -69,9 +69,12 @@ export default new Vuex.Store({
       getters.socorristasPorTurno(turno).length,
   },
   mutations: {
-    setItemEquipe: (state, item) => {
-      let t = item.tipo;
-      let d = item.dados;
+    //setItemEquipe: (state, item) => {
+    setItemEquipe: (state, payload) => {
+      // posso destruturar o que quero ao invés de trazer o payload completo. ex. { item, abc }
+      console.log(payload);
+      let t = payload.item.tipo;
+      let d = payload.item.dados;
 
       if (t == "enfermeiros") state.equipe.enfermeiro = d.nome;
       if (t == "socorristas") state.equipe.socorrista = d.nome;
