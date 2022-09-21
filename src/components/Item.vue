@@ -27,7 +27,19 @@ export default {
   },
   methods: {
     // ...mapMutations(["setItemEquipe"]),
-    ...mapMutations({ setItemEquipe: "setItemEquipe" }),
+    ...mapMutations({
+      setItemEquipe: "setItemEquipe",
+      setItemEquipeComVerificacao: (commit, payload) => {
+        //camada de lógica
+        /* 
+          Ex.: Reserva do item
+          verificar se o item está disponível
+            se sim, marcar no backe-nd que ele está sendo utilizado para uma equipe
+            se não, apresentar uma msg de controle indicando que o item esta em uso
+        */
+        commit("setItemEquipe", payload);
+      },
+    }),
     adicionarItemEquipe() {
       let item = {
         tipo: this.tipo,
@@ -44,7 +56,7 @@ export default {
       //   item,
       // });
 
-      this.setItemEquipe({ item });
+      this.setItemEquipeComVerificacao({ item });
     },
     // adicionarItemEquipeAbordagemIncorreta() {
     //   // console.log(this.tipo, this.dados);
