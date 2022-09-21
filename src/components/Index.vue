@@ -66,7 +66,12 @@ export default {
     ]),
   },
   created() {
-    this.$store.dispatch("fetchEquipamentos");
+    this.$store.dispatch({
+      type: "fetchEquipamentos",  // para saber qual action será disparada
+      carros: true,
+      telefones: true,
+      kitsDeReanimacao: true,
+    });
     this.$store.dispatch("fetchProfissionais");
   },
 };
