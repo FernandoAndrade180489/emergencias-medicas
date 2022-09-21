@@ -65,9 +65,22 @@ export default {
       "setEquipamentos",
     ]),
     // ...mapActions(["fetchEquipamentos", "fetchProfissionais"]),
+    /*
     ...mapActions({
       fetchEquipamentos: "fetchEquipamentos",
       fetchProfissionais: "fetchProfissionais",
+    }),
+    */
+    ...mapActions({
+      fetchEquipamentos: (dispatch, payload) => {
+        // implementar lógica
+        dispatch("fetchEquipamentos", payload);
+        // implementar lógica
+      },
+      fetchProfissionais: (dispatch) => {
+        // implementar lógica
+        dispatch("fetchProfissionais");
+      },
     }),
   },
   created() {
