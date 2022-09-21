@@ -2,9 +2,7 @@
   <div>
     <div class="row">
       <div class="col">
-        <h5 :class="corTitulo">
-          <i class="bi-boxes me-2"></i>{{ tituloCustomizadoLocal }}
-        </h5>
+        <h5 :class="corTitulo"><i class="bi-boxes me-2"></i>{{ titulo }}</h5>
       </div>
     </div>
     <div class="row">
@@ -27,7 +25,9 @@
         </div>
         <div class="row mt-3">
           <div class="col">
-            <button type="button" class="btn btn-primary">Montar equipe</button>
+            <button type="button" class="btn btn-primary" @click="montarEquipe">
+              Montar equipe
+            </button>
           </div>
         </div>
       </div>
@@ -72,6 +72,12 @@ export default {
       if (this.kitDeReanimacao) return "uti.png";
       if (this.carro) return "simples.png";
       return "indefinida.png";
+    },
+  },
+  methods: {
+    montarEquipe() {
+      let equipe = Object.assign({}, this.$store.state.equipe);
+      this.$store.commit("adicionarEquipeEmEquipes", equipe);
     },
   },
 };

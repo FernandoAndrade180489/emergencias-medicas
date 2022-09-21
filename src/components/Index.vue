@@ -2,9 +2,7 @@
   <div>
     <nav class="navbar navbar-light bg-light">
       <div class="container-fluid">
-        <a class="navbar-brand" href="#"
-          >{{ $store.state.titulo }} {{ tituloCustomizado }}</a
-        >
+        <a class="navbar-brand" href="#">{{ $store.state.titulo }}</a>
       </div>
     </nav>
 
