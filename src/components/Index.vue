@@ -66,28 +66,8 @@ export default {
     ]),
   },
   created() {
-    fetch("http://localhost:3001/enfermeiros")
-      .then((response) => response.json())
-      .then((dados) => this.setEnfermeiros(dados));
-
-    fetch("http://localhost:3001/socorristas")
-      .then((response) => response.json())
-      .then((dados) => this.setSocorristas(dados));
-
-    fetch("http://localhost:3001/medicos")
-      .then((response) => response.json())
-      .then((dados) => this.setMedicos(dados));
-
-    // fetch("http://localhost:3001/equipamentos")
-    //   .then((response) => response.json())
-    //   .then((dados) => this.setEquipamentos(dados));
-
-    // Usando Action ao invés de mutation
-    fetch("http://localhost:3001/equipamentos")
-      .then((response) => response.json())
-      .then((dados) => {
-        this.$store.dispatch("adicionarEquipamentos", dados);
-      });
+    this.$store.dispatch("fetchEquipamentos");
+    this.$store.dispatch("fetchProfissionais");
   },
 };
 </script>

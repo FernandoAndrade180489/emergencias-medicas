@@ -76,13 +76,30 @@ export default new Vuex.Store({
     },
   },
   actions: {
-    adicionarEquipamentos(context, { carros, kitsDeReanimacao, telefones }) {
-      context.commit("setCarros", carros);
-      // processamento assincrono
-      context.commit("setTelefones", telefones);
-      // processamento assincrono
-      // diversas regras de negócio
-      context.commit("setKitsDeReanimacao", kitsDeReanimacao);
+    fetchEquipamentos(context) {
+      fetch("http://localhost:3001/equipamentos")
+        .then((response) => response.json())
+        .then((dados) => {
+          context.commit("setCarros", dados.carros);
+          // processamento assincrono
+          context.commit("setTelefones", dados.telefones);
+          // processamento assincrono
+          // diversas regras de negócio
+          context.commit("setKitsDeReanimacao", dados.kitsDeReanimacao);
+        });
+    },
+    fetchProfissionais(context) {
+      fetch("http://localhost:3001/enfermeiros")
+        .then((response) => response.json())
+        .then((dados) => context.commit("setEnfermeiros", dados));
+
+      fetch("http://localhost:3001/socorristas")
+        .then((response) => response.json())
+        .then((dados) => context.commit("setSocorristas", dados));
+
+      fetch("http://localhost:3001/medicos")
+        .then((response) => response.json())
+        .then((dados) => context.commit("setMedicos", dados));
     },
   },
 });
