@@ -78,9 +78,16 @@ export default {
       .then((response) => response.json())
       .then((dados) => this.setMedicos(dados));
 
+    // fetch("http://localhost:3001/equipamentos")
+    //   .then((response) => response.json())
+    //   .then((dados) => this.setEquipamentos(dados));
+
+    // Usando Action ao invés de mutation
     fetch("http://localhost:3001/equipamentos")
       .then((response) => response.json())
-      .then((dados) => this.setEquipamentos(dados));
+      .then((dados) => {
+        this.$store.dispatch("adicionarEquipamentos", dados);
+      });
   },
 };
 </script>
